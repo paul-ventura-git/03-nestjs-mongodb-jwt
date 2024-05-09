@@ -1,11 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { PostService } from './post.service';
-//import { CreatePostDto } from './dto/create-post.dto';
-//import { UpdatePostDto } from './dto/update-post.dto';
 import { Blogpost } from './entities/post.entity'
 
-@Controller('post')
+@Controller('blogpost')
 export class PostController {
   constructor(private readonly postService: PostService) {}
 

@@ -1,5 +1,36 @@
 /* eslint-disable prettier/prettier */
-import { Controller } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Get,
+    HttpCode,
+    HttpStatus,
+    Post,
+    Request,
+    UseGuards
+  } from '@nestjs/common';
+  import { AuthGuard } from './auth.guard';
+  import { AuthService } from './auth.service';
+  
+  @Controller('auth')
+  export class AuthController {
+    constructor(private authService: AuthService) {}
+  
+    @HttpCode(HttpStatus.OK)
+    @Post('login')
+    signIn(@Body() signInDto: Record<string, any>) {
+      return this.authService.signIn(signInDto.username, signInDto.password);
+    }
+  
+    @UseGuards(AuthGuard)
+    @Get('profile')
+    getProfile(@Request() req) {
+      return req.user;
+    }
 
-@Controller('auth')
-export class AuthController {}
+    @UseGuards(AuthGuard)
+    @Get('users')
+    getUsers(@Request() req) {
+      return req.user;
+    }
+  }
