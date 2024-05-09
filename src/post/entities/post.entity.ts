@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
 
 @Entity()
 export class Blogpost {
@@ -15,7 +15,7 @@ export class Blogpost {
   @Column({ default: false })
   isPublished: boolean;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  @CreateDateColumn({type: 'timestamp'})
   createdAt: Date;
 
   @Column({ type: 'timestamp', default: null, nullable: true })
