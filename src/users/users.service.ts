@@ -26,15 +26,15 @@ constructor(
     return this.usersRepository.find();
   }
 
-  findOne(id: number): Promise<User> {
-    return this.usersRepository.findOneBy({ id: id });
+  findOne(id: any): Promise<User> {
+    return this.usersRepository.findOneBy({ _id: id });
   }
 
   findByName(username: string): Promise<User> {
     return this.usersRepository.findOneBy({ username: username });
   }
 
-  async remove(id: number): Promise<void> {
+  async remove(id: any): Promise<void> {
     await this.usersRepository.delete(id);
   }
 }

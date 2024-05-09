@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ObjectId } from 'mongodb';
+import { BaseEntity, Column, CreateDateColumn, Entity, ObjectIdColumn } from 'typeorm';
 
 @Entity()
-export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class User extends BaseEntity{
+  @ObjectIdColumn()
+  _id: ObjectId;
 
   @Column()
   username: string;
@@ -23,4 +24,7 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @CreateDateColumn({type: 'timestamp'})
+  createdAt: Date;
 }

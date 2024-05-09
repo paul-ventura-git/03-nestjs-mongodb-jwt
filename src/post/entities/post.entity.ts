@@ -4,7 +4,7 @@ import { Column, CreateDateColumn, Entity, ObjectId, ObjectIdColumn } from 'type
 @Entity()
 export class Blogpost {
   @ObjectIdColumn() // Unique for MongoDB
-  id: ObjectId;
+  _id: ObjectId;
 
   @Column()
   title: string;

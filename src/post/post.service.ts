@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-//import { CreatePostDto } from './dto/create-post.dto';
-//import { UpdatePostDto } from './dto/update-post.dto';
 import { Blogpost } from './entities/post.entity';
 
 @Injectable()
@@ -28,7 +26,7 @@ export class PostService {
     return this.postRepository.find();
   }
   findOne(id: any): Promise<Blogpost> {
-    return this.postRepository.findOneBy({ id: id });
+    return this.postRepository.findOneBy({ _id: id });
   }
 /*
   update(id: number, updatedPost: UpdatePostDto) {
