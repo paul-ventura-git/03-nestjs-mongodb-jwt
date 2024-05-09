@@ -2,7 +2,7 @@
 import { Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
 
 @Entity()
-export class Post {
+export class Blogpost {
   @ObjectIdColumn() // Unique for MongoDB
   id: ObjectId;
 

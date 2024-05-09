@@ -1,15 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { PostService } from './post.service';
-import { CreatePostDto } from './dto/create-post.dto';
-import { UpdatePostDto } from './dto/update-post.dto';
+//import { CreatePostDto } from './dto/create-post.dto';
+//import { UpdatePostDto } from './dto/update-post.dto';
+import { Blogpost } from './entities/post.entity'
 
 @Controller('post')
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
   @Post()
-  create(@Body() createPostDto: CreatePostDto) {
-    return this.postService.create(createPostDto);
+  create(@Body() newPost: Blogpost): Promise<Blogpost> {
+    return this.postService.create(newPost);
   }
 
   @Get()
@@ -21,12 +23,12 @@ export class PostController {
   findOne(@Param('id') id: string) {
     return this.postService.findOne(+id);
   }
-
+/*
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
     return this.postService.update(+id, updatePostDto);
   }
-
+*/
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.postService.remove(+id);
